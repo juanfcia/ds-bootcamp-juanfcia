@@ -58,10 +58,10 @@ def jugar_hundir_la_flota():
         
         # Comprobar si alguien ganó tras el movimiento
         if maquina.esta_hundido():
-            print("\n🎉🎉🎉 ¡HAS GANADO EL JUEGO! 🎉🎉🎉")
+            print("\n¡HAS GANADO EL JUEGO!")
             break
         if jugador.esta_hundido():
-            print("\n☠️☠️☠️ La máquina te ha hundido. ¡HAS PERDIDO! ☠️☠️☠️")
+            print("\nLa máquina te ha hundido. ¡HAS PERDIDO!")
             break
             
     print("\n--- Fin de la partida ---")
