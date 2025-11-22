@@ -7,8 +7,8 @@ def jugar_hundir_la_flota():
     print("Iniciando juego Hundir la Flota...")
 
     # 1. Inicializar tableros y colocar barcos
-    jugador = Tablero("Jugador Humano")
-    maquina = Tablero("Máquina HAL-9000")
+    jugador = Tablero("Jugador")
+    maquina = Tablero("Máquina")
     
     jugador.colocar_barcos_aleatorios()
     maquina.colocar_barcos_aleatorios()
@@ -27,7 +27,7 @@ def jugar_hundir_la_flota():
             # Mostrar el estado del tablero del jugador y lo que ve del enemigo
             jugador.imprimir_tablero_propio()
             jugador.imprimir_tablero_visita()
-            print("\n--- Turno del Jugador ---")
+            print("\n--- Turno del jugador ---")
             
             # Pedir coordenadas y procesar disparo
             fila, columna = pedir_coordenadas_usuario()
@@ -35,14 +35,14 @@ def jugar_hundir_la_flota():
             jugador.registrar_disparo_enemigo(fila, columna, acierto)
 
             if acierto:
-                print("¡ACIERTO! ¡Vuelve a disparar!")
+                print("¡Acierto! ¡Vuelve a disparar!")
                 # El turno NO cambia (continue)
             else:
-                print("AGUA. Pierdes el turno.")
+                print("Agua. Pierdes el turno.")
                 turno = "maquina" # Cambia el turno
 
         else: # turno == "maquina"
-            print("\n--- Turno de la Máquina ---")
+            print("\n--- Turno de la máquina ---")
             # Generar disparo aleatorio de la máquina
             fila, columna = generar_disparo_maquina(intentos_maquina)
             print(f"La máquina dispara a: ({fila}, {columna}).")
@@ -50,18 +50,18 @@ def jugar_hundir_la_flota():
             acierto = jugador.recibir_disparo(fila, columna)
 
             if acierto:
-                print("¡La máquina ACERTA! Vuelve a disparar.")
+                print("¡La máquina acierta! Vuelve a disparar.")
                 # El turno de la máquina NO cambia
             else:
-                print("La máquina falla (AGUA). Te toca a ti.")
+                print("La máquina falla (Agua). Te toca a ti.")
                 turno = "jugador" # Cambia el turno
         
         # Comprobar si alguien ganó tras el movimiento
         if maquina.esta_hundido():
-            print("\n¡HAS GANADO EL JUEGO!")
+            print("\n¡Has ganado el juego!")
             break
         if jugador.esta_hundido():
-            print("\nLa máquina te ha hundido. ¡HAS PERDIDO!")
+            print("\nLa máquina te ha hundido. ¡Has perdido")
             break
             
     print("\n--- Fin de la partida ---")
